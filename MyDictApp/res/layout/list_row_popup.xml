@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/TableLayout3"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/list_row_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:maxHeight="100dp"
+        android:padding="5dip"
+        android:paddingRight="10dp"
+        android:singleLine="true"
+        android:textColor="#FF33B5E5"
+        android:textSize="23sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_height="1dip"
+        android:background="#FF33B5E5" />
+
+    <TextView
+        android:id="@+id/list_row_flex"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:hint="@string/hint_flex"
+        android:maxHeight="100dp"
+        android:padding="5dip"
+        android:paddingRight="10dp"
+        android:singleLine="false" />
+
+    <View
+        android:layout_height="0.1dip"
+        android:background="#404040" />
+
+    <TextView
+        android:id="@+id/list_row_rom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="@string/hint_ro"
+        android:maxHeight="100dp"
+        android:padding="5dip"
+        android:paddingRight="10dp"
+        android:singleLine="false" />
+
+    <View
+        android:layout_height="0.1dip"
+        android:background="#404040" />
+
+    <TextView
+        android:id="@+id/list_row_related"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:hint="@string/hint_related"
+        android:maxHeight="100dp"
+        android:padding="5dip"
+        android:paddingRight="10dp"
+        android:textStyle="italic" />
+
+    <View
+        android:layout_height="0.1dip"
+        android:background="#404040" />
+
+    <TextView
+        android:id="@+id/list_row_ant"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="@string/hint_ant"
+        android:maxHeight="100dp"
+        android:padding="5dip"
+        android:paddingRight="10dp" />
+
+    <View
+        android:layout_height="0.1dip"
+        android:background="#404040" />
+
+    <TextView
+        android:id="@+id/list_row_engl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="@string/hint_en"
+        android:maxHeight="100dp"
+        android:padding="5dip"
+        android:paddingRight="10dp" />
+
+    <View
+        android:layout_height="0.1dip"
+        android:background="#404040" />
+
+    <TextView
+        android:id="@+id/list_row_fr"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="@string/hint_fr"
+        android:maxHeight="100dp"
+        android:padding="5dip"
+        android:paddingRight="10dp" />
+
+    <View
+        android:layout_height="0.1dip"
+        android:background="#404040" />
+
+    <TextView
+        android:id="@+id/list_row_comments"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="@string/hint_comments"
+        android:maxHeight="200dp"
+        android:padding="5dip"
+        android:paddingRight="10dp" 
+        android:textStyle="italic"/>
+
+    <View
+        android:layout_height="0.1dip"
+        android:background="#404040" />
+
+</TableLayout>

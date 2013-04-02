@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/menuitem_addWord"
+        android:icon="@android:drawable/ic_menu_search"
+        android:showAsAction="always"
+        android:title="@string/menu_add">
+    </item>
+    <item
+        android:id="@+id/menuitem_addLesson"
+        android:icon="@android:drawable/ic_menu_add"
+        android:showAsAction="always"
+        android:title="@string/menu_add">
+    </item>
+    <item
+        android:id="@+id/menuitem_removeLesson"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:showAsAction="always"
+        android:title="@string/menu_remove">
+    </item>
+    <item
+        android:id="@+id/menuitem_search"
+        android:icon="@android:drawable/ic_menu_view"
+        android:showAsAction="always"
+        android:title="@string/menu_search">
+    </item>
+    <item
+        android:id="@+id/menuitem_feedback"
+        android:icon="@android:drawable/ic_menu_help"
+        android:showAsAction="never"
+        android:title="@string/menu_feedback">
+    </item>
+    <item
+        android:id="@+id/menuitem_saveDB"
+        android:icon="@android:drawable/ic_menu_save"
+        android:showAsAction="never"
+        android:title="@string/menu_saveDB">
+    </item>
+    <item
+        android:id="@+id/menuitem_about"
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:title="@string/menu_about">
+    </item>
+    <item
+        android:id="@+id/menuitem_quit"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:showAsAction="ifRoom"
+        android:title="@string/menu_quit">
+    </item>
+
+</menu>
