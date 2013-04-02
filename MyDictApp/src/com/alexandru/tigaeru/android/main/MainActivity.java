@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Calendar;
-
 import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.Context;
@@ -23,9 +22,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Toast;
-
 import com.alexandru.tigaeru.android.db.DbHelper;
 import com.alexandru.tigaeru.android.dialogs.AboutDialogActivity;
 import com.alexandru.tigaeru.android.dialogs.AddWordDialogActivity;
@@ -111,8 +108,7 @@ public class MainActivity extends Activity implements LessonsFragment.OnLessonSe
 
 		} else {
 			// PHONE
-			// If the frag is not available, we're in the one-pane layout and
-			// must swap frags...
+			// If the frag is not available, we're in the one-pane layout and must swap frags...
 			// Create fragment and give it an argument for the selected lesson
 			wordsFrag = new WordsFragment();
 			Bundle args = new Bundle();
@@ -255,13 +251,6 @@ public class MainActivity extends Activity implements LessonsFragment.OnLessonSe
 	protected void onResume() {
 		super.onResume();
 
-		// if (!isTablet){
-		// lessonsFragment.loadLessons();
-		// }
-
-		// refresh the view
-		// onLessonSelected(currentSelection);
-
 //		 getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
 //		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 	}
@@ -292,7 +281,6 @@ public class MainActivity extends Activity implements LessonsFragment.OnLessonSe
 		nrOfLessons = prefs.getInt("lessons", 1);
 		// Load title
 		currentTitleName = prefs.getString(currentselection + "", "");
-
 	}
 
 	private String getTitle(int position) {

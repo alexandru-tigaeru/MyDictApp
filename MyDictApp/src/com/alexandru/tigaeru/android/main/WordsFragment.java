@@ -184,7 +184,7 @@ public class WordsFragment extends Fragment implements LoaderManager.LoaderCallb
 		public boolean onCreateActionMode(ActionMode mode, Menu menu) {
 			// Inflate a menu resource providing context menu items
 			MenuInflater inflater = mode.getMenuInflater();
-			inflater.inflate(R.menu.context_menu, menu);
+			inflater.inflate(R.menu.context_menu_words, menu);
 			return true;
 		}
 

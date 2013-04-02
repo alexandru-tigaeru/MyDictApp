@@ -147,7 +147,7 @@ public class LessonsFragment extends ListFragment {
 		public boolean onCreateActionMode(ActionMode mode, Menu menu) {
 			// Inflate a menu resource providing context menu items
 			MenuInflater inflater = mode.getMenuInflater();
-			inflater.inflate(R.menu.context_menu, menu);
+			inflater.inflate(R.menu.context_menu_lessons, menu);
 			return true;
 		}
 
