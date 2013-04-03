@@ -6,7 +6,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 public class NetworkUtils {
-	public boolean isNetworkAvailable(Activity mActivity) {
+	public static boolean isNetworkAvailable(Activity mActivity) {
 		ConnectivityManager cm = (ConnectivityManager) mActivity.getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo networkInfo = cm.getActiveNetworkInfo();
 		// if no network is available networkInfo will be null

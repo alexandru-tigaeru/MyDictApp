@@ -13,7 +13,7 @@
     <string name="menu_about">About</string>
     <string name="menu_saveDB">Datenbank sichern</string>
     <string name="auth">com.alexandru.tigaeru.android.db.WordsContentProvider</string>
-    <string name="app_version">0.8.13beta</string>
+    <string name="app_version">0.8.14beta</string>
     <string name="author">Alexandru Tigaeru</string>
     <string name="dummy_lesson">Wähle eine Lektion aus!</string>
     <string name="enter_name">Namen eingeben:</string>
@@ -35,10 +35,13 @@
     <string name="but_cancel">Abbrechen</string>
     <string name="but_close">Schließen</string>
     <string name="but_ok">OK</string>
+    <string name="no_network">Zur Zeit besteht keine Netzwerkverbindung!\nDie Online-Übersetzung funktioniert nicht.</string>
 
     <!-- Release Notes -->
     <string name="release_notes">Release Notes:\n</string>
-    <string name="release_notes_details">\t0.8.13\n
+    <string name="release_notes_details">\t0.8.14\n
+        * show a dialog, when no network available\n
+        0.8.13\n
         * port App to phones\n
         0.8.12\n
         * [internal] increase responsiveness by using LoaderManager\n

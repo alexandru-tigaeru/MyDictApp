@@ -10,6 +10,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -22,6 +23,8 @@ import com.alexandru.tigaeru.android.main.Word;
 import com.alexandru.tigaeru.android.main.WordsFragment;
 import com.alexandru.tigaeru.android.mydictapp.R;
 import com.alexandru.tigaeru.android.utils.MyLinkedHashSet;
+import com.alexandru.tigaeru.android.utils.NetworkUtils;
+
 import de.androidpraxis.utilities.NetworkUtility;
 import de.androidpraxis.utilities.NetworkUtilityMessageHandler;
 
@@ -55,8 +58,14 @@ public class AddWordDialogActivity extends Activity {
 	}
 
 	public void uebersetzungSuchen(View v) {
-		// searchSync();
-		searchAsync();
+		// if no network tell the user the online search won't work
+		if(NetworkUtils.isNetworkAvailable(this)){
+			// searchSync();
+			searchAsync();
+		} else {
+			Intent dialogNoNetwork = new Intent(this, NoNetworkDialogActivity.class);
+			startActivity(dialogNoNetwork);
+		}
 	}
 
 	private void searchAsync() {
