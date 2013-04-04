@@ -59,7 +59,7 @@ public class AddWordDialogActivity extends Activity {
 
 	public void uebersetzungSuchen(View v) {
 		// if no network tell the user the online search won't work
-		if(NetworkUtils.isNetworkAvailable(this)){
+		if (NetworkUtils.isNetworkAvailable(this)) {
 			// searchSync();
 			searchAsync();
 		} else {
@@ -157,7 +157,8 @@ public class AddWordDialogActivity extends Activity {
 		private String toTranslate;
 		private static final String GLOSBE_RO = "http://glosbe.com/gapi/translate?from=de&dest=ro&format=xml&phrase=%s&pretty=true";
 		private static final String GLOSBE_EN = "http://glosbe.com/gapi/translate?from=de&dest=en&format=xml&phrase=%s&pretty=true";
-		private static final String GLOSBE_DE = "http://glosbe.com/gapi/translate?from=de&dest=de&format=xml&phrase=%s&pretty=true";
+		// private static final String GLOSBE_DE =
+		// "http://glosbe.com/gapi/translate?from=de&dest=de&format=xml&phrase=%s&pretty=true";
 		private static final String GLOSBE_FR = "http://glosbe.com/gapi/translate?from=de&dest=fr&format=xml&phrase=%s&pretty=true";
 		private static final String WIKTIONARY = "http://en.wiktionary.org/w/api.php?format=xml&action=query&titles=%s&rvprop=content&prop=revisions";
 
@@ -203,7 +204,7 @@ public class AddWordDialogActivity extends Activity {
 			} else if (params[1].equals(DbHelper.ROMANIAN)) {
 				translation = translate(DbHelper.ROMANIAN);
 			} else if (params[1].equals(DbHelper.ANTONYM)) {
-				translation = "";
+				translation = translate(DbHelper.ANTONYM);
 			} else if (params[1].equals(DbHelper.FLEXION)) {
 				translation = translate(DbHelper.FLEXION);
 			} else if (params[1].equals(DbHelper.RELATED_TERMS)) {
@@ -225,7 +226,7 @@ public class AddWordDialogActivity extends Activity {
 
 		}
 
-		// translate just in romanian,english and related_terms for the moment
+		// translate just in romanian, english, french and find related_terms and flexion
 		private Set<String> loadTranslation(String translateTo) {
 			Set<String> result = new MyLinkedHashSet<String>();
 			String sUri = "";
@@ -233,11 +234,10 @@ public class AddWordDialogActivity extends Activity {
 				sUri = String.format(GLOSBE_RO, toTranslate);
 			} else if (translateTo.equals(DbHelper.ENGLISH)) {
 				sUri = String.format(GLOSBE_EN, toTranslate);
-			} else if (translateTo.equals(DbHelper.RELATED_TERMS)) {
-				sUri = String.format(GLOSBE_DE, toTranslate);
 			} else if (translateTo.equals(DbHelper.FRENCH)) {
 				sUri = String.format(GLOSBE_FR, toTranslate);
 			} else {
+				// related_terms and flexion and antonyms
 				sUri = String.format(WIKTIONARY, toTranslate);
 			}
 
@@ -248,11 +248,13 @@ public class AddWordDialogActivity extends Activity {
 			TranslationXmlHandler contentHandler;
 
 			if (translateTo.equals(DbHelper.FLEXION)) {
-				contentHandler = new TranslationXmlHandler(result, toTranslate, 1);
+				contentHandler = TranslationXmlHandler.createAsDeclension(result, toTranslate, 1);
 			} else if (translateTo.equals(DbHelper.RELATED_TERMS)) {
-				contentHandler = new TranslationXmlHandler(result, toTranslate, 7);
-			} else {
-				contentHandler = new TranslationXmlHandler(result, toTranslate, 3);
+				contentHandler = TranslationXmlHandler.createAsRelated(result, toTranslate, 5);
+			} else if (translateTo.equals(DbHelper.ANTONYM)) {
+				contentHandler = TranslationXmlHandler.createAsAntonym(result, toTranslate, 3);
+			} else{
+				contentHandler = TranslationXmlHandler.createAsTranslation(result, toTranslate, 3);
 			}
 
 			try {
@@ -276,13 +278,46 @@ public class AddWordDialogActivity extends Activity {
 		private boolean isTranslation = false;
 		private boolean isDeclension = false;
 		private boolean isGerman = false;
+		private boolean isRelated = false;
+		private boolean isAntonym = false;
+		private boolean wantDeclension = false;
+		private boolean wantRelated = false;
+		private boolean wantAntonym = false;
 		private String toTranslate;
 		private int nrOfTranslations;
+		private static final boolean SEARCH_FOR_DECLENSION = true;
+		private static final boolean SEARCH_FOR_RELATED = true;
+		private static final boolean SEARCH_FOR_ANTONYMS = true;
 
-		public TranslationXmlHandler(Set<String> data, String toTranslate, int nrOfTranslations) {
+		private TranslationXmlHandler(Set<String> data, String toTranslate, int nrOfTranslations,
+				boolean wantDeclension, boolean wantRelated, boolean wantAntonym) {
 			this.data = data;
 			this.toTranslate = toTranslate;
 			this.nrOfTranslations = nrOfTranslations;
+			this.wantDeclension = wantDeclension;
+			this.wantRelated = wantRelated;
+			this.wantAntonym = wantAntonym;
+		}
+
+		public static TranslationXmlHandler createAsAntonym(Set<String> data, String toTranslate, int count) {
+			return new TranslationXmlHandler(data, toTranslate, count, !SEARCH_FOR_DECLENSION,
+					!SEARCH_FOR_RELATED, SEARCH_FOR_ANTONYMS);
+		}
+
+		public static TranslationXmlHandler createAsDeclension(Set<String> data, String toTranslate, int count) {
+			return new TranslationXmlHandler(data, toTranslate, count, SEARCH_FOR_DECLENSION,
+					!SEARCH_FOR_RELATED, !SEARCH_FOR_ANTONYMS);
+		}
+
+		public static TranslationXmlHandler createAsRelated(Set<String> data, String toTranslate, int count) {
+			return new TranslationXmlHandler(data, toTranslate, count, !SEARCH_FOR_DECLENSION,
+					SEARCH_FOR_RELATED, !SEARCH_FOR_ANTONYMS);
+		}
+
+		public static TranslationXmlHandler createAsTranslation(Set<String> data, String toTranslate,
+				int count) {
+			return new TranslationXmlHandler(data, toTranslate, count, !SEARCH_FOR_DECLENSION,
+					!SEARCH_FOR_RELATED, !SEARCH_FOR_ANTONYMS);
 		}
 
 		@Override
@@ -313,11 +348,104 @@ public class AddWordDialogActivity extends Activity {
 
 			// Log.d("LINE out: ", curText);
 			handleGlosbe(currText);
-			handleWiki(currText);
+			if (wantDeclension) {
+				handleWikiDeclension(currText);
+			}
 
+			if (wantRelated) {
+				handleWikiRelated(currText);
+			}
+			
+			if (wantAntonym) {
+				handleWikiAntonym(currText);
+			}
 		}
 
-		private void handleWiki(String currText) {
+		private void handleWikiAntonym(String currText) {
+			boolean searchFurther = true;
+			if (currText.equals("\n")) {
+				// ignore
+			} else {
+				if (currText.trim().equals("==German==")) {
+					isGerman = true;
+				}
+				if (isAntonym) {
+					if (currText.startsWith("*")) {
+						currText = currText.replace("*", "");
+
+						if (currText.contains("[[")) {
+							currText = currText.replace("[[", "");
+							currText = currText.replace("]]", "");
+						}
+						translation = currText.trim();
+
+						if (isGerman && data.size() < nrOfTranslations && !translation.equals("")) {
+							data.add(translation);
+						}
+						searchFurther = true;
+					} else {
+						isAntonym=false;
+					}
+				}
+
+				if (currText.trim().equals("====Antonyms====")) {
+					// next non emty line is the one we want
+					isAntonym = true;
+				} else if (isAntonym && searchFurther) {
+					// another related word
+					isAntonym = true;
+				} else {
+					isAntonym = false;
+				}
+			}	
+		}
+
+		private void handleWikiRelated(String currText) {
+			boolean searchFurther = true;
+			if (currText.equals("\n")) {
+				// ignore
+			} else {
+				if (currText.trim().equals("==German==")) {
+					isGerman = true;
+				}
+				if (isRelated) {
+					if (currText.startsWith("*")) {
+						currText = currText.replace("*", "");
+
+						if (currText.contains("{{")) {
+							currText = currText.replace("}}", "");
+							currText = currText.replace("{{", "");
+							currText = currText.replace("l|de|", "");
+						}
+
+						if (currText.contains("[[")) {
+							currText = currText.replace("[[", "");
+							currText = currText.replace("]]", "");
+						}
+						translation = currText.trim();
+
+						if (isGerman && data.size() < nrOfTranslations && !translation.equals("")) {
+							data.add(translation);
+						}
+						searchFurther = true;
+					} else {
+						isRelated=false;
+					}
+				}
+
+				if (currText.trim().equals("====Derived terms====")) {
+					// next non emty line is the one we want
+					isRelated = true;
+				} else if (isRelated && searchFurther) {
+					// another related word
+					isRelated = true;
+				} else {
+					isRelated = false;
+				}
+			}
+		}
+
+		private void handleWikiDeclension(String currText) {
 			if (currText.equals("\n")) {
 				// ignore
 			} else {
