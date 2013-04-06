@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Calendar;
+
 import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.Context;
@@ -17,12 +18,12 @@ import android.content.pm.ActivityInfo;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.StrictMode;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
 import com.alexandru.tigaeru.android.db.DbHelper;
 import com.alexandru.tigaeru.android.dialogs.AboutDialogActivity;
 import com.alexandru.tigaeru.android.dialogs.AddWordDialogActivity;
@@ -51,15 +52,15 @@ public class MainActivity extends Activity implements LessonsFragment.OnLessonSe
 		super.onCreate(savedInstanceState);
 		// disable landscape
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-		
+
 		// allow network access on the gui thread
-//		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-//		StrictMode.setThreadPolicy(policy);
+		// StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+		// StrictMode.setThreadPolicy(policy);
 
 		appContext = getApplicationContext();
 
-		// also load first lessons title
-		loadPreferences(0);
+		// load nr of lessons
+		loadPreferences();
 
 		setContentView(R.layout.main_layout);
 		isTablet = findViewById(R.id.fragment_container) == null;
@@ -76,9 +77,9 @@ public class MainActivity extends Activity implements LessonsFragment.OnLessonSe
 
 			// Create an instance of LessonsFragment
 			lessonsFragment = new LessonsFragment();
-			Bundle myBundle = new Bundle();
-			myBundle.putInt(NR_OF_LESSONS, nrOfLessons);
-			lessonsFragment.setArguments(myBundle);
+//			Bundle myBundle = new Bundle();
+//			myBundle.putInt(NR_OF_LESSONS, nrOfLessons);
+//			lessonsFragment.setArguments(myBundle);
 
 			// Add the fragment to the 'fragment_container' FrameLayout
 			getFragmentManager().beginTransaction().add(R.id.fragment_container, lessonsFragment).commit();
@@ -99,8 +100,6 @@ public class MainActivity extends Activity implements LessonsFragment.OnLessonSe
 		wordsFrag = (WordsFragment) getFragmentManager().findFragmentById(R.id.words_fragment);
 
 		currentSelection = position;
-		// be up to date with the names of the lesson
-		loadPreferences(position);
 
 		if (isTablet && wordsFrag != null) {
 			// TABLET
@@ -217,7 +216,8 @@ public class MainActivity extends Activity implements LessonsFragment.OnLessonSe
 			SharedPreferences.Editor editor = prefs.edit();
 			editor.putInt("lessons", Lesson.getNumberOfLessons());
 			editor.remove(Lesson.getNumberOfLessons() + "");
-			editor.commit();
+			editor.apply();
+			nrOfLessons--;
 		} else {
 			Toast.makeText(appContext, "da gibt's nichts mehr zu löschen...", Toast.LENGTH_SHORT).show();
 		}
@@ -251,8 +251,8 @@ public class MainActivity extends Activity implements LessonsFragment.OnLessonSe
 	protected void onResume() {
 		super.onResume();
 
-//		 getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
-//		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		// getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
+		// this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 	}
 
 	public void onLessonTitleClicked(View v) {
@@ -270,17 +270,15 @@ public class MainActivity extends Activity implements LessonsFragment.OnLessonSe
 				SharedPreferences.Editor editor = prefs.edit();
 				editor.remove(currentSelection + "");
 				editor.putString(currentSelection + "", currentTitleName);
-				editor.commit();
+				editor.apply();
 			}
 		}
 	}
 
-	private void loadPreferences(int currentselection) {
+	private void loadPreferences() {
 		prefs = getSharedPreferences(PREFS_NAME, 0);
 		// get nr of lessons
 		nrOfLessons = prefs.getInt("lessons", 1);
-		// Load title
-		currentTitleName = prefs.getString(currentselection + "", "");
 	}
 
 	private String getTitle(int position) {
@@ -293,8 +291,8 @@ public class MainActivity extends Activity implements LessonsFragment.OnLessonSe
 		// save the new number of lessons
 		SharedPreferences.Editor editor = prefs.edit();
 		editor.putInt("lessons", Lesson.getNumberOfLessons());
-		editor.putString(currentSelection + "", currentTitleName);
-		editor.commit();
+		editor.apply();
+		nrOfLessons++;
 	}
 
 	public boolean isTablet() {

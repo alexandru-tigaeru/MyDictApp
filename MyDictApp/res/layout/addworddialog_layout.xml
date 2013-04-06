@@ -153,5 +153,4 @@
             android:onClick="cancel"
             android:text="@string/but_cancel" />
     </LinearLayout>
-
-</LinearLayout>
+</LinearLayout>

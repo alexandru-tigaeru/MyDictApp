@@ -230,7 +230,7 @@ public class WordsFragment extends Fragment implements LoaderManager.LoaderCallb
 			dbHelper = new DbHelper(getActivity());
 		}
 		dbHelper.deleteWord(id);
-		Toast.makeText(getActivity(), "Das Wort wurde gelöscht!", Toast.LENGTH_SHORT).show();
+		Toast.makeText(getActivity(), getResources().getString(R.string.delete_word), Toast.LENGTH_SHORT).show();
 	}
 
 	public String getTitle() {

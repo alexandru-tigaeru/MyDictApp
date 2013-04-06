@@ -2,22 +2,26 @@
 <resources>
 
     <string name="app_name">MyDictApp</string>
+    <string name="app_dedication">pentru Manu</string>
 
     <!-- Menu Strings -->
     <string name="menu_search">Suche</string>
     <string name="menu_add">Hinzufügen</string>
-    <string name="menu_remove">Löschen</string>
+    <string name="menu_remove">Letzte Lektion löschen</string>
+    <string name="menu_translation_remove">Eintrag löschen</string>
     <string name="menu_edit">Bearbeiten</string>
     <string name="menu_quit">Beenden</string>
     <string name="menu_feedback">Feedback</string>
     <string name="menu_about">About</string>
     <string name="menu_saveDB">Datenbank sichern</string>
     <string name="auth">com.alexandru.tigaeru.android.db.WordsContentProvider</string>
-    <string name="app_version">0.8.16alpha</string>
+    <string name="app_version">0.8.16beta</string>
     <string name="author">Alexandru Tigaeru</string>
     <string name="dummy_lesson">Wähle eine Lektion aus!</string>
     <string name="enter_name">Namen eingeben:</string>
 
+    <string name="delete_word">"Der Eintrag wurde gelöscht!"</string>
+    
     <!-- Dialogs -->
     <string name="search">Nachschlagen:</string>
     <string name="translate">Übersetzen</string>
@@ -40,7 +44,7 @@
     <!-- Release Notes -->
     <string name="release_notes">Release Notes:\n</string>
     <string name="release_notes_details">\t0.8.16\n
-        * always receive same translations\n
+        * fix bug where different translations were returned by same requests\n
         0.8.15\n
         * change the provider for related words\n
         * add antonyms search for adjectives and adverbs\n

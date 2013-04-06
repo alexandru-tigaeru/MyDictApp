@@ -4,7 +4,7 @@
     <item
         android:id="@+id/context_delete"
         android:showAsAction="always"
-        android:title="@string/menu_remove">
+        android:title="@string/menu_translation_remove">
     </item>
     <item
         android:id="@+id/context_edit"
