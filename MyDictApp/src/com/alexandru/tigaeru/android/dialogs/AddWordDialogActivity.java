@@ -53,11 +53,11 @@ public class AddWordDialogActivity extends Activity {
 		super.onCreate(arg0);
 	}
 
-	public void abbrechen(View v) {
+	public void cancel(View v) {
 		this.finish();
 	}
 
-	public void uebersetzungSuchen(View v) {
+	public void searchTranslation(View v) {
 		// if no network tell the user the online search won't work
 		if (NetworkUtils.isNetworkAvailable(this)) {
 			// searchSync();
@@ -127,7 +127,7 @@ public class AddWordDialogActivity extends Activity {
 		frenchET = ((EditText) findViewById(R.id.uebersetzung_fr));
 	}
 
-	public void inDBApspeichern(View v) {
+	public void persisData(View v) {
 		DbHelper dbHelper = new DbHelper(this);
 
 		String name = nameET.getText().toString();
