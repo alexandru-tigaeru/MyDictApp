@@ -13,6 +13,7 @@ public class TranslationXmlHandler extends DefaultHandler {
 	private Set<String> data;
 	private String translation = "";
 	private boolean isTranslation = false;
+	private boolean tokenFound = false;
 	private boolean isDeclension = false;
 	private boolean isGerman = false;
 	private boolean isRelated = false;
@@ -66,10 +67,17 @@ public class TranslationXmlHandler extends DefaultHandler {
 			throws SAXException {
 		super.startElement(uri, localName, qName, attributes);
 
-		if (localName.equals("text")) {
+		if (localName.equals("values")) {
+			tokenFound = true;
 			isTranslation = true;
 		} else {
-			isTranslation = false;
+			if (tokenFound && localName.equals("string")) {
+				isTranslation = true;
+			} else {
+				isTranslation = false;	
+			}
+			//reset lookup
+			tokenFound = false;
 		}
 	}
 
