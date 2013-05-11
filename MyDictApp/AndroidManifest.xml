@@ -14,14 +14,9 @@
 
     <application
         android:allowBackup="true"
-        android:backupAgent="TheBackupAgent"
         android:icon="@drawable/wb2"
         android:label="@string/app_name"
         android:uiOptions="splitActionBarWhenNarrow" >
-        
-        <meta-data
-            android:name="com.google.android.backup.api_key"
-            android:value="AEdPqrEAAAAIpL3MkLIxtJT2dYIEcxZSLA_B2KieiWgIZqygPQ" />
 
         <activity
             android:name="com.alexandru.tigaeru.android.main.MainActivity"
@@ -64,6 +59,9 @@
         <activity
             android:name="com.alexandru.tigaeru.android.dialogs.NoNetworkDialogActivity"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" >
+        </activity>
+        <activity
+            android:name="com.lamerman.FileDialog" >
         </activity>
     </application>
 

@@ -1,14 +1,5 @@
 package com.alexandru.tigaeru.android.main;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.Calendar;
-
 import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.Context;
@@ -30,6 +21,9 @@ import com.alexandru.tigaeru.android.dialogs.AddWordDialogActivity;
 import com.alexandru.tigaeru.android.dialogs.NewLessonNameDialogActivity;
 import com.alexandru.tigaeru.android.dialogs.SearchDialogActivity;
 import com.alexandru.tigaeru.android.mydictapp.R;
+import com.alexandru.tigaeru.android.utils.Backup;
+import com.lamerman.FileDialog;
+import com.lamerman.SelectionMode;
 
 public class MainActivity extends Activity implements LessonsFragment.OnLessonSelectedListener {
 
@@ -39,6 +33,7 @@ public class MainActivity extends Activity implements LessonsFragment.OnLessonSe
 	private int currentSelection = 0;
 	private String currentTitleName = "";
 	public static final int REQUEST_CODE = 100;
+	private static final int REQUEST_LOAD = 101;
 	public static final String NR_OF_LESSONS = "nr_of_lessons";
 	public static final String TITLE = "title";
 	private int nrOfLessons;
@@ -77,9 +72,9 @@ public class MainActivity extends Activity implements LessonsFragment.OnLessonSe
 
 			// Create an instance of LessonsFragment
 			lessonsFragment = new LessonsFragment();
-//			Bundle myBundle = new Bundle();
-//			myBundle.putInt(NR_OF_LESSONS, nrOfLessons);
-//			lessonsFragment.setArguments(myBundle);
+			// Bundle myBundle = new Bundle();
+			// myBundle.putInt(NR_OF_LESSONS, nrOfLessons);
+			// lessonsFragment.setArguments(myBundle);
 
 			// Add the fragment to the 'fragment_container' FrameLayout
 			getFragmentManager().beginTransaction().add(R.id.fragment_container, lessonsFragment).commit();
@@ -144,9 +139,12 @@ public class MainActivity extends Activity implements LessonsFragment.OnLessonSe
 		case R.id.menuitem_feedback:
 			Toast.makeText(appContext, "feedback", Toast.LENGTH_SHORT).show();
 			return true;
-		case R.id.menuitem_saveDB:
-			if (saveDB())
-				return true;
+		case R.id.menuitem_backup:
+			backup();
+			return true;
+		case R.id.menuitem_restore:
+			restore();
+			return true;
 		case R.id.menuitem_about:
 			about();
 			return true;
@@ -157,53 +155,25 @@ public class MainActivity extends Activity implements LessonsFragment.OnLessonSe
 		return false;
 	}
 
-	private boolean saveDB() {
+	private void backup() {
 		DbHelper dbHelper = new DbHelper(this);
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
-		String pathToDB = db.getPath();
-		db.close();
-		String backupFile = "";
 
-		try {
-			InputStream input = new FileInputStream(pathToDB);
-			File dir = new File(Environment.getExternalStorageDirectory().getPath() + "/Download/MyDictApp");
-			dir.mkdir();
-
-			Calendar calendar = Calendar.getInstance();
-			int year = calendar.get(Calendar.YEAR);
-			int month = calendar.get(Calendar.MONTH);
-			int date = calendar.get(Calendar.DATE);
-			int hours = calendar.get(Calendar.HOUR_OF_DAY);
-			int minutes = calendar.get(Calendar.MINUTE);
-			int seconds = calendar.get(Calendar.SECOND);
-			String timeStamp = year + "." + (month + 1) + "." + date + "_" + hours + "-" + minutes + "-"
-					+ seconds;
-
-			// Path to the external backup
-			backupFile = Environment.getExternalStorageDirectory().getPath() + "/Download/MyDictApp/db_"
-					+ timeStamp;
-			OutputStream output = new FileOutputStream(backupFile);
-
-			// transfer bytes from the Input File to the Output File
-			byte[] buffer = new byte[1024];
-			int length;
-			while ((length = input.read(buffer)) > 0) {
-				output.write(buffer, 0, length);
-			}
-
-			output.flush();
-			output.close();
-			input.close();
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		String backupFile = Backup.saveDB(db, "");
 
 		Toast.makeText(appContext, backupFile + " gesichert!", Toast.LENGTH_LONG).show();
+	}
 
-		return true;
+	private void restore() {
+
+		Intent intent = new Intent(getBaseContext(), FileDialog.class);
+		intent.putExtra(FileDialog.START_PATH, Environment.getExternalStorageDirectory().getPath()
+				+ "/Download/MyDictApp");
+
+		// can user select directories or not
+		intent.putExtra(FileDialog.CAN_SELECT_DIR, false);
+		intent.putExtra(FileDialog.SELECTION_MODE, SelectionMode.MODE_OPEN);
+		startActivityForResult(intent, REQUEST_LOAD);
 	}
 
 	private void about() {
@@ -272,6 +242,23 @@ public class MainActivity extends Activity implements LessonsFragment.OnLessonSe
 				editor.putString(currentSelection + "", currentTitleName);
 				editor.apply();
 			}
+		}
+		// handle the answer from backup file selection dialog
+		if (resultCode == RESULT_OK && requestCode == REQUEST_LOAD) {
+			String backupFile = data.getStringExtra(FileDialog.RESULT_PATH);
+
+			DbHelper dbHelper = new DbHelper(this);
+			SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+			Backup.restoreDB(db, backupFile);
+
+			// restart activity
+			Intent i = getBaseContext().getPackageManager().getLaunchIntentForPackage(
+					getBaseContext().getPackageName());
+			i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(i);
+			
+			Toast.makeText(appContext, backupFile + " wurde geladen!", Toast.LENGTH_LONG).show();
 		}
 	}
 

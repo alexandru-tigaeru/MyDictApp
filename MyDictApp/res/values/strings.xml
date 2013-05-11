@@ -13,10 +13,11 @@
     <string name="menu_quit">Beenden</string>
     <string name="menu_feedback">Feedback</string>
     <string name="menu_about">About</string>
-    <string name="menu_saveDB_local">Datenbank lokal sichern</string>
-    <string name="menu_saveDB_ABS">Datenbank online sichern</string>
+    <string name="menu_backup">Übersetzungen sichern</string>
+    <string name="menu_restore">Übersetzungen wiederherstellen</string>
+    
     <string name="auth">com.alexandru.tigaeru.android.db.WordsContentProvider</string>
-    <string name="app_version">0.8.17</string>
+    <string name="app_version">0.8.18alpha</string>
     <string name="author">Alexandru Tigaeru</string>
     <string name="dummy_lesson">Wähle eine Lektion aus!</string>
     <string name="enter_name">Namen eingeben:</string>
@@ -45,7 +46,7 @@
     <!-- Release Notes -->
     <string name="release_notes">Release Notes:\n</string>
     <string name="release_notes_details">\t0.8.18\n
-        * //on going// save the translations online with the Android Backup Service\n
+        * load the translations from local backup\n
         0.8.17\n
         * rewrite XML Parser due to API change\n
         0.8.16\n

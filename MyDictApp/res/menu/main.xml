@@ -32,16 +32,16 @@
         android:title="@string/menu_feedback">
     </item>
     <item
-        android:id="@+id/menuitem_saveDB"
+        android:id="@+id/menuitem_backup"
         android:icon="@android:drawable/ic_menu_save"
         android:showAsAction="never"
-        android:title="@string/menu_saveDB_local">
+        android:title="@string/menu_backup">
     </item>
     <item
-        android:id="@+id/menuitem_saveDB_abs"
-        android:icon="@android:drawable/ic_menu_upload"
+        android:id="@+id/menuitem_restore"
+        android:icon="@android:drawable/ic_menu_revert"
         android:showAsAction="never"
-        android:title="@string/menu_saveDB_ABS">
+        android:title="@string/menu_restore">
     </item>
     <item
         android:id="@+id/menuitem_about"
