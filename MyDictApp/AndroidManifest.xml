@@ -19,7 +19,7 @@
         android:uiOptions="splitActionBarWhenNarrow" >
 
         <activity
-            android:name="com.alexandru.tigaeru.android.main.MainActivity"
+            android:name="com.alexandru.tigaeru.android.mydictapp.main.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,36 +28,36 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.alexandru.tigaeru.android.dialogs.SearchDialogActivity"
+            android:name="com.alexandru.tigaeru.android.mydictapp.dialogs.SearchDialogActivity"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" >
         </activity>
         <activity
-            android:name="com.alexandru.tigaeru.android.dialogs.AddWordDialogActivity"
+            android:name="com.alexandru.tigaeru.android.mydictapp.dialogs.AddWordDialogActivity"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" >
         </activity>
         <activity
-            android:name="com.alexandru.tigaeru.android.dialogs.EditWordDialogActivity"
+            android:name="com.alexandru.tigaeru.android.mydictapp.dialogs.EditWordDialogActivity"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" >
         </activity>
 
         <provider
-            android:name="com.alexandru.tigaeru.android.db.WordsContentProvider"
+            android:name="com.alexandru.tigaeru.android.mydictapp.db.WordsContentProvider"
             android:authorities="@string/auth"
             android:exported="false" >
         </provider>
 
         <activity
-            android:name="com.alexandru.tigaeru.android.dialogs.NewLessonNameDialogActivity"
+            android:name="com.alexandru.tigaeru.android.mydictapp.dialogs.NewLessonNameDialogActivity"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" >
         </activity>
-        <activity android:name="com.alexandru.tigaeru.android.dialogs.AboutDialogActivity" >
+        <activity android:name="com.alexandru.tigaeru.android.mydictapp.dialogs.AboutDialogActivity" >
         </activity>
         <activity
-            android:name="com.alexandru.tigaeru.android.main.PopupActivity"
+            android:name="com.alexandru.tigaeru.android.mydictapp.main.PopupActivity"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" >
         </activity>
         <activity
-            android:name="com.alexandru.tigaeru.android.dialogs.NoNetworkDialogActivity"
+            android:name="com.alexandru.tigaeru.android.mydictapp.dialogs.NoNetworkDialogActivity"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" >
         </activity>
         <activity

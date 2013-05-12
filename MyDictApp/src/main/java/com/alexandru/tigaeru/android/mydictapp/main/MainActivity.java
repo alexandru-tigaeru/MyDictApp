@@ -1,4 +1,4 @@
-package com.alexandru.tigaeru.android.main;
+package com.alexandru.tigaeru.android.mydictapp.main;
 
 import android.app.Activity;
 import android.app.FragmentTransaction;
@@ -15,13 +15,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.alexandru.tigaeru.android.db.DbHelper;
-import com.alexandru.tigaeru.android.dialogs.AboutDialogActivity;
-import com.alexandru.tigaeru.android.dialogs.AddWordDialogActivity;
-import com.alexandru.tigaeru.android.dialogs.NewLessonNameDialogActivity;
-import com.alexandru.tigaeru.android.dialogs.SearchDialogActivity;
 import com.alexandru.tigaeru.android.mydictapp.R;
-import com.alexandru.tigaeru.android.utils.Backup;
+import com.alexandru.tigaeru.android.mydictapp.db.DbHelper;
+import com.alexandru.tigaeru.android.mydictapp.dialogs.AboutDialogActivity;
+import com.alexandru.tigaeru.android.mydictapp.dialogs.AddWordDialogActivity;
+import com.alexandru.tigaeru.android.mydictapp.dialogs.NewLessonNameDialogActivity;
+import com.alexandru.tigaeru.android.mydictapp.dialogs.SearchDialogActivity;
+import com.alexandru.tigaeru.android.mydictapp.utils.Backup;
 import com.lamerman.FileDialog;
 import com.lamerman.SelectionMode;
 

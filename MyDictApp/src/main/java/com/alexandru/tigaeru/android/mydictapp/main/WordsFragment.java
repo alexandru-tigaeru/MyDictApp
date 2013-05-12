@@ -1,4 +1,4 @@
-package com.alexandru.tigaeru.android.main;
+package com.alexandru.tigaeru.android.mydictapp.main;
 
 import android.app.Fragment;
 import android.app.LoaderManager;
@@ -22,11 +22,11 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.alexandru.tigaeru.android.db.DbHelper;
-import com.alexandru.tigaeru.android.db.WordsContentProvider;
-import com.alexandru.tigaeru.android.dialogs.EditWordDialogActivity;
 import com.alexandru.tigaeru.android.mydictapp.R;
-import com.alexandru.tigaeru.android.utils.MySimpleCursorAdapter;
+import com.alexandru.tigaeru.android.mydictapp.db.DbHelper;
+import com.alexandru.tigaeru.android.mydictapp.db.WordsContentProvider;
+import com.alexandru.tigaeru.android.mydictapp.dialogs.EditWordDialogActivity;
+import com.alexandru.tigaeru.android.mydictapp.utils.MySimpleCursorAdapter;
 
 public class WordsFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 	public static final String ARG_POSITION = "position";

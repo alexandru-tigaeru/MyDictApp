@@ -1,4 +1,4 @@
-package com.alexandru.tigaeru.android.main;
+package com.alexandru.tigaeru.android.mydictapp.main;
 
 public class Word {
 

@@ -1,4 +1,4 @@
-package com.alexandru.tigaeru.android.dialogs;
+package com.alexandru.tigaeru.android.mydictapp.dialogs;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.alexandru.tigaeru.android.main.MainActivity;
 import com.alexandru.tigaeru.android.mydictapp.R;
+import com.alexandru.tigaeru.android.mydictapp.main.MainActivity;
 
 public class NewLessonNameDialogActivity extends Activity {
 	private String lessonName;

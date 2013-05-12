@@ -1,4 +1,4 @@
-package com.alexandru.tigaeru.android.utils;
+package com.alexandru.tigaeru.android.mydictapp.utils;
 
 import java.io.File;
 import java.io.FileInputStream;

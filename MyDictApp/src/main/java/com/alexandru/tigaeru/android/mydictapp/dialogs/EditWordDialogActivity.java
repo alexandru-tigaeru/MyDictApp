@@ -1,4 +1,4 @@
-package com.alexandru.tigaeru.android.dialogs;
+package com.alexandru.tigaeru.android.mydictapp.dialogs;
 
 import android.app.Activity;
 import android.database.Cursor;
@@ -6,11 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.alexandru.tigaeru.android.db.DbHelper;
-import com.alexandru.tigaeru.android.db.WordsContentProvider;
-import com.alexandru.tigaeru.android.main.Word;
-import com.alexandru.tigaeru.android.main.WordsFragment;
 import com.alexandru.tigaeru.android.mydictapp.R;
+import com.alexandru.tigaeru.android.mydictapp.db.DbHelper;
+import com.alexandru.tigaeru.android.mydictapp.db.WordsContentProvider;
+import com.alexandru.tigaeru.android.mydictapp.main.Word;
+import com.alexandru.tigaeru.android.mydictapp.main.WordsFragment;
 
 public class EditWordDialogActivity extends Activity {
 	private int currentWordID;

@@ -1,4 +1,4 @@
-package com.alexandru.tigaeru.android.utils;
+package com.alexandru.tigaeru.android.mydictapp.utils;
 
 import java.io.IOException;
 import java.util.Set;
@@ -10,7 +10,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.EditText;
 
-import com.alexandru.tigaeru.android.db.DbHelper;
+import com.alexandru.tigaeru.android.mydictapp.db.DbHelper;
 
 public class TranslationLoader extends AsyncTask<String, Void, String> {
 

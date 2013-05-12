@@ -1,4 +1,4 @@
-package com.alexandru.tigaeru.android.dialogs;
+package com.alexandru.tigaeru.android.mydictapp.dialogs;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,12 +10,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.alexandru.tigaeru.android.db.DbHelper;
-import com.alexandru.tigaeru.android.main.Word;
-import com.alexandru.tigaeru.android.main.WordsFragment;
 import com.alexandru.tigaeru.android.mydictapp.R;
-import com.alexandru.tigaeru.android.utils.NetworkUtils;
-import com.alexandru.tigaeru.android.utils.TranslationLoader;
+import com.alexandru.tigaeru.android.mydictapp.db.DbHelper;
+import com.alexandru.tigaeru.android.mydictapp.main.Word;
+import com.alexandru.tigaeru.android.mydictapp.main.WordsFragment;
+import com.alexandru.tigaeru.android.mydictapp.utils.NetworkUtils;
+import com.alexandru.tigaeru.android.mydictapp.utils.TranslationLoader;
 
 public class AddWordDialogActivity extends Activity {
 	private int currentLesson;

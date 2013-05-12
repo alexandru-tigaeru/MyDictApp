@@ -1,4 +1,4 @@
-package com.alexandru.tigaeru.android.dialogs;
+package com.alexandru.tigaeru.android.mydictapp.dialogs;
 
 import android.app.Activity;
 import android.app.LoaderManager;
@@ -12,9 +12,9 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.alexandru.tigaeru.android.db.DbHelper;
-import com.alexandru.tigaeru.android.db.WordsContentProvider;
 import com.alexandru.tigaeru.android.mydictapp.R;
+import com.alexandru.tigaeru.android.mydictapp.db.DbHelper;
+import com.alexandru.tigaeru.android.mydictapp.db.WordsContentProvider;
 
 public class SearchDialogActivity extends Activity implements LoaderManager.LoaderCallbacks<Cursor> {
 	private EditText querryET;

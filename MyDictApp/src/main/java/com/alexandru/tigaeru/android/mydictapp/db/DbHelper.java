@@ -1,4 +1,4 @@
-package com.alexandru.tigaeru.android.db;
+package com.alexandru.tigaeru.android.mydictapp.db;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -6,8 +6,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import com.alexandru.tigaeru.android.main.Word;
 import com.alexandru.tigaeru.android.mydictapp.BuildConfig;
+import com.alexandru.tigaeru.android.mydictapp.main.Word;
 
 public class DbHelper extends SQLiteOpenHelper {
 	private Context mContext;

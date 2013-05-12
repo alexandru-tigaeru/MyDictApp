@@ -1,4 +1,4 @@
-package com.alexandru.tigaeru.android.db;
+package com.alexandru.tigaeru.android.mydictapp.db;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;

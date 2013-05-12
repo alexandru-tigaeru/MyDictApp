@@ -1,4 +1,4 @@
-package com.alexandru.tigaeru.android.main;
+package com.alexandru.tigaeru.android.mydictapp.main;
 
 import android.app.Activity;
 import android.database.Cursor;
@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.widget.SimpleCursorAdapter;
 import android.view.View;
 import android.widget.ListView;
-import com.alexandru.tigaeru.android.db.DbHelper;
 import com.alexandru.tigaeru.android.mydictapp.R;
+import com.alexandru.tigaeru.android.mydictapp.db.DbHelper;
 
 public class PopupActivity extends Activity {
 	private int selectedWord;

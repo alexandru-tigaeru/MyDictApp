@@ -1,4 +1,4 @@
-package com.alexandru.tigaeru.android.main;
+package com.alexandru.tigaeru.android.mydictapp.main;
 
 import java.util.ArrayList;
 import java.util.List;

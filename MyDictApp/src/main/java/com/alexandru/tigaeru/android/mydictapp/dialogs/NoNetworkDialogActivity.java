@@ -1,4 +1,4 @@
-package com.alexandru.tigaeru.android.dialogs;
+package com.alexandru.tigaeru.android.mydictapp.dialogs;
 
 import android.app.Activity;
 import android.os.Bundle;
