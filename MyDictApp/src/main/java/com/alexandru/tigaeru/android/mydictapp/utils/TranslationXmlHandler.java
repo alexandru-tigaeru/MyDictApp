@@ -9,6 +9,11 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+/**
+ * 
+ * @author Alexandru_Tigaeru
+ *
+ */
 public class TranslationXmlHandler extends DefaultHandler {
 	private Set<String> data;
 	private String translation = "";

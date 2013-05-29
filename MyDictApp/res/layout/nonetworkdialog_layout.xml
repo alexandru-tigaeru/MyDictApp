@@ -12,13 +12,13 @@
         android:text="@string/no_network" />
 
     <View
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="#90909090" />
 
     <Button
         style="?android:attr/buttonBarButtonStyle"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:onClick="close"

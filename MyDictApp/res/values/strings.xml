@@ -4,6 +4,9 @@
     <string name="app_name">MyDictApp</string>
     <string name="app_dedication">pentru Manu</string>
 
+    <!-- In-App Strings -->
+    <string name="app_no_more_lessons">Da gibt\'s nichts mehr zu löschen</string>
+    
     <!-- Menu Strings -->
     <string name="menu_search">Suche</string>
     <string name="menu_add">Hinzufügen</string>
@@ -17,7 +20,7 @@
     <string name="menu_restore">Übersetzungen wiederherstellen</string>
     
     <string name="auth">com.alexandru.tigaeru.android.db.WordsContentProvider</string>
-    <string name="app_version">0.8.18alpha</string>
+    <string name="app_version">0.8.19beta</string>
     <string name="author">Alexandru Tigaeru</string>
     <string name="dummy_lesson">Wähle eine Lektion aus!</string>
     <string name="enter_name">Namen eingeben:</string>
@@ -45,7 +48,9 @@
 
     <!-- Release Notes -->
     <string name="release_notes">Release Notes:\n</string>
-    <string name="release_notes_details">\t0.8.18\n
+    <string name="release_notes_details">\t0.8.19\n
+        * [internal] refactorings\n
+        0.8.18\n
         * load the translations from local backup\n
         0.8.17\n
         * rewrite XML Parser due to API change\n

@@ -7,6 +7,11 @@ import android.widget.SimpleCursorAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
+/**
+ * 
+ * @author Alexandru_Tigaeru
+ *
+ */
 public class MySimpleCursorAdapter extends SimpleCursorAdapter {
 
 	public MySimpleCursorAdapter(Context context, int layout, Cursor c, String[] from, int[] to) {

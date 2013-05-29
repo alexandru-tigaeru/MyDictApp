@@ -25,6 +25,12 @@ import com.alexandru.tigaeru.android.mydictapp.utils.Backup;
 import com.lamerman.FileDialog;
 import com.lamerman.SelectionMode;
 
+/**
+ * Entrypoint in the app. Activity displaying the lesson numbers and the currently selected lesson words.
+ * 
+ * @author Alexandru_Tigaeru
+ *
+ */
 public class MainActivity extends Activity implements LessonsFragment.OnLessonSelectedListener {
 
 	private Context appContext;
@@ -58,6 +64,8 @@ public class MainActivity extends Activity implements LessonsFragment.OnLessonSe
 		loadPreferences();
 
 		setContentView(R.layout.main_layout);
+		
+		//TODO: find a better way to differentiate between tablet/handset
 		isTablet = findViewById(R.id.fragment_container) == null;
 
 		// Check whether the activity is using the layout version with
@@ -189,7 +197,8 @@ public class MainActivity extends Activity implements LessonsFragment.OnLessonSe
 			editor.apply();
 			nrOfLessons--;
 		} else {
-			Toast.makeText(appContext, "da gibt's nichts mehr zu löschen...", Toast.LENGTH_SHORT).show();
+			// all lessons were deleted
+			Toast.makeText(appContext, getResources().getString(R.string.app_no_more_lessons), Toast.LENGTH_SHORT).show();
 		}
 	}
 

@@ -17,6 +17,11 @@ import com.alexandru.tigaeru.android.mydictapp.main.WordsFragment;
 import com.alexandru.tigaeru.android.mydictapp.utils.NetworkUtils;
 import com.alexandru.tigaeru.android.mydictapp.utils.TranslationLoader;
 
+/**
+ * 
+ * @author Alexandru_Tigaeru
+ *
+ */
 public class AddWordDialogActivity extends Activity {
 	private int currentLesson;
 	private EditText nameET;

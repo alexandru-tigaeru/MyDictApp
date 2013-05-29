@@ -67,12 +67,12 @@
         android:typeface="monospace" />
 
     <ScrollView
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_gravity="center" >
 
         <LinearLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="200dp"
             android:orientation="vertical" >
 

@@ -1,5 +1,10 @@
 package com.alexandru.tigaeru.android.mydictapp.main;
 
+/**
+ * 
+ * @author Alexandru_Tigaeru
+ *
+ */
 public class Lesson {
 	private String name = "Lektion0";
 	private int currentNumber = 0;

@@ -10,6 +10,11 @@ import android.widget.ListView;
 import com.alexandru.tigaeru.android.mydictapp.R;
 import com.alexandru.tigaeru.android.mydictapp.db.DbHelper;
 
+/**
+ * 
+ * @author Alexandru_Tigaeru
+ *
+ */
 public class PopupActivity extends Activity {
 	private int selectedWord;
 	private SQLiteDatabase db;

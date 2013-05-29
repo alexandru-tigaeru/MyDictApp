@@ -26,25 +26,15 @@ public class Word {
 	}
 
 	private int lesson;
-
 	private String name;
-
 	private String english;
-
 	private String romanian;
-
 	private String antonym;
-
 	private String synonym;
-
 	private String flexion;
-
 	private String relatedTerms;
-
 	private String comments;
-
 	private String french;
-
 	private Type type;
 
 	public enum Type {
@@ -102,5 +92,4 @@ public class Word {
 	public Type getType() {
 		return type;
 	}
-
 }

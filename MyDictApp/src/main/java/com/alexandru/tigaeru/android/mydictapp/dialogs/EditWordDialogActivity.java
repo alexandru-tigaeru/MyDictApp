@@ -12,6 +12,11 @@ import com.alexandru.tigaeru.android.mydictapp.db.WordsContentProvider;
 import com.alexandru.tigaeru.android.mydictapp.main.Word;
 import com.alexandru.tigaeru.android.mydictapp.main.WordsFragment;
 
+/**
+ * 
+ * @author Alexandru_Tigaeru
+ *
+ */
 public class EditWordDialogActivity extends Activity {
 	private int currentWordID;
 	private TextView wordET;

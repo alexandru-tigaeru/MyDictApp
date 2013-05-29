@@ -12,6 +12,11 @@ import android.widget.EditText;
 
 import com.alexandru.tigaeru.android.mydictapp.db.DbHelper;
 
+/**
+ * 
+ * @author Alexandru_Tigaeru
+ *
+ */
 public class TranslationLoader extends AsyncTask<String, Void, String> {
 
 	private EditText mField;

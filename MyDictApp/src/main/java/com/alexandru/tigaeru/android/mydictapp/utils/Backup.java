@@ -12,6 +12,11 @@ import java.util.Calendar;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 
+/**
+ * 
+ * @author Alexandru_Tigaeru
+ *
+ */
 public class Backup {
 
 	public static String saveDB(SQLiteDatabase db, String backupFile) {

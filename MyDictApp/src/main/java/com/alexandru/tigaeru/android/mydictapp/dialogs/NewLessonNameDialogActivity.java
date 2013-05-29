@@ -9,6 +9,11 @@ import android.widget.TextView;
 import com.alexandru.tigaeru.android.mydictapp.R;
 import com.alexandru.tigaeru.android.mydictapp.main.MainActivity;
 
+/**
+ * 
+ * @author Alexandru_Tigaeru
+ *
+ */
 public class NewLessonNameDialogActivity extends Activity {
 	private String lessonName;
 	public static final String NEWNAME = "newName";

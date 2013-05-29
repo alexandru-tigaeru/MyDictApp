@@ -5,6 +5,11 @@ import android.os.Bundle;
 import android.view.View;
 import com.alexandru.tigaeru.android.mydictapp.R;
 
+/**
+ * 
+ * @author Alexandru_Tigaeru
+ *
+ */
 public class NoNetworkDialogActivity extends Activity {
 
 	@Override

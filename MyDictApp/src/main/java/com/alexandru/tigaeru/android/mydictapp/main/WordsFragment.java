@@ -28,6 +28,11 @@ import com.alexandru.tigaeru.android.mydictapp.db.WordsContentProvider;
 import com.alexandru.tigaeru.android.mydictapp.dialogs.EditWordDialogActivity;
 import com.alexandru.tigaeru.android.mydictapp.utils.MySimpleCursorAdapter;
 
+/**
+ * 
+ * @author Alexandru_Tigaeru
+ *
+ */
 public class WordsFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 	public static final String ARG_POSITION = "position";
 	public static final String ARG_TITLE = "title";

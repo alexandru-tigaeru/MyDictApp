@@ -17,6 +17,11 @@ import android.widget.ListView;
 import android.widget.Toast;
 import com.alexandru.tigaeru.android.mydictapp.R;
 
+/**
+ * 
+ * @author Alexandru_Tigaeru
+ *
+ */
 public class LessonsFragment extends ListFragment {
 	private OnLessonSelectedListener mCallback;
 	private ActionMode mActionMode;
@@ -186,8 +191,12 @@ public class LessonsFragment extends ListFragment {
 	public void setNrOfLessons(int nr) {
 		nrOfLessons = nr;
 	}
-
-	// The container Activity must implement this interface so the fragment can deliver messages
+	
+	/**
+	 * The container Activity must implement this interface so the fragment can deliver messages
+	 *
+	 * @author Alexandru_Tigaeru
+	 */
 	public interface OnLessonSelectedListener {
 		/** Called by HeadlinesFragment when a list item is selected */
 		public void onLessonSelected(int position);

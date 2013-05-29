@@ -22,6 +22,11 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.net.http.AndroidHttpClient;
 
+/**
+ * 
+ * @author Alexandru_Tigaeru
+ *
+ */
 public class NetworkUtils {
 	public static boolean isNetworkAvailable(Activity mActivity) {
 		ConnectivityManager cm = (ConnectivityManager) mActivity

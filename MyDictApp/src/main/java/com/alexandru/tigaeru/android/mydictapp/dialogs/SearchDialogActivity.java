@@ -16,6 +16,11 @@ import com.alexandru.tigaeru.android.mydictapp.R;
 import com.alexandru.tigaeru.android.mydictapp.db.DbHelper;
 import com.alexandru.tigaeru.android.mydictapp.db.WordsContentProvider;
 
+/**
+ * 
+ * @author Alexandru_Tigaeru
+ *
+ */
 public class SearchDialogActivity extends Activity implements LoaderManager.LoaderCallbacks<Cursor> {
 	private EditText querryET;
 	private ListView list;
