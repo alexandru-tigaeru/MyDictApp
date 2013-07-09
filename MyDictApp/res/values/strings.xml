@@ -20,7 +20,7 @@
     <string name="menu_restore">Übersetzungen wiederherstellen</string>
     
     <string name="auth">com.alexandru.tigaeru.android.db.WordsContentProvider</string>
-    <string name="app_version">0.8.19beta</string>
+    <string name="app_version">0.8.20alpha</string>
     <string name="author">Alexandru Tigaeru</string>
     <string name="dummy_lesson">Wähle eine Lektion aus!</string>
     <string name="enter_name">Namen eingeben:</string>
