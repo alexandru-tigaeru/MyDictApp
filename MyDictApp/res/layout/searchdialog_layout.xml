@@ -14,17 +14,19 @@
         android:text="@string/search"
         android:textColor="#FF33B5E5"
         android:textSize="18sp" />
-
-    <EditText
+   
+    <AutoCompleteTextView
         android:id="@+id/wort_suche"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/insert_word"
-        android:inputType="textEmailAddress" >
+        android:inputType="textEmailAddress"
+        android:completionThreshold="2" >
 
         <requestFocus />
-    </EditText>
+    </AutoCompleteTextView>
+
 
     <TextView
         android:id="@+id/emptyListElem"
