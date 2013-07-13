@@ -55,11 +55,11 @@ public class SearchDialogActivity extends Activity implements LoaderManager.Load
 		lm = getLoaderManager();
 	}
 
-	public void abbrechen(View v) {
+	public void cancel(View v) {
 		this.finish();
 	}
 
-	public void suchen(View v) {
+	public void search(View v) {
 		querry = querryET.getText().toString();
 
 		if (querry.equals("")) {

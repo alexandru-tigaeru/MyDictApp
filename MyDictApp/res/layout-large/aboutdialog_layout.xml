@@ -135,7 +135,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:onClick="close"
-        android:text="OK" />
+        android:text="@string/but_ok" />
 
     <TextView
         android:layout_width="wrap_content"

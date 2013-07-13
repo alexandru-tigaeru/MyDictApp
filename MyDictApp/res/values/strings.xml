@@ -29,6 +29,8 @@
     
     <!-- Dialogs -->
     <string name="search">Nachschlagen:</string>
+    <string name="search_word">Wort nachschlagen</string>
+    <string name="insert_word">Wort eingeben</string>
     <string name="translate">Übersetzen</string>
     <string name="edit">Übersetzung bearbeiten</string>
     <string name="editword">Dummy</string>

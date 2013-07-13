@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Wort eingeben"
+        android:hint="@string/insert_word"
         android:inputType="textEmailAddress" >
 
         <requestFocus />
@@ -51,8 +51,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="suchen"
-            android:text="Wort nachschlagen" />
+            android:onClick="search"
+            android:text="@string/search_word" />
 
         <View
             android:layout_width="2dp"
@@ -65,8 +65,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="abbrechen"
-            android:text="Abbrechen" />
+            android:onClick="cancel"
+            android:text="@string/but_cancel" />
     </LinearLayout>
 
     <ListView

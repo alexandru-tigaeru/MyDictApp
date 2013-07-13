@@ -37,12 +37,12 @@ public class LessonsFragment extends ListFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		int layout = android.R.layout.simple_list_item_activated_1;
+		
 		// grrrr
 		isTablet = ((MainActivity) getActivity()).isTablet();
 
 		// Create an array adapter for the list view
-		adapter = new ArrayAdapter<Lesson>(getActivity(), layout, lessonsList);
+		adapter = new ArrayAdapter<Lesson>(getActivity(), android.R.layout.simple_list_item_activated_1, lessonsList);
 
 		setListAdapter(adapter);
 		if (!isTablet) {
@@ -85,8 +85,7 @@ public class LessonsFragment extends ListFragment {
 		// (We do this during onStart because at the point the listview is available.)
 		if (getFragmentManager().findFragmentById(R.id.words_fragment) != null) {
 			getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-		} else {
-		}
+		} 
 
 		ListView myListView = getListView();
 
@@ -198,7 +197,7 @@ public class LessonsFragment extends ListFragment {
 	 * @author Alexandru_Tigaeru
 	 */
 	public interface OnLessonSelectedListener {
-		/** Called by HeadlinesFragment when a list item is selected */
+		/** Called by MainActivity when a list item is selected */
 		public void onLessonSelected(int position);
 	}
 
