@@ -12,7 +12,7 @@ import org.xml.sax.helpers.DefaultHandler;
 /**
  * 
  * @author Alexandru_Tigaeru
- *
+ * 
  */
 public class TranslationXmlHandler extends DefaultHandler {
 	private Set<String> data;
@@ -32,8 +32,8 @@ public class TranslationXmlHandler extends DefaultHandler {
 	private static final boolean SEARCH_FOR_RELATED = true;
 	private static final boolean SEARCH_FOR_ANTONYMS = true;
 
-	private TranslationXmlHandler(Set<String> data, String toTranslate, int nrOfTranslations,
-			boolean wantDeclension, boolean wantRelated, boolean wantAntonym) {
+	private TranslationXmlHandler(Set<String> data, String toTranslate, int nrOfTranslations, boolean wantDeclension,
+			boolean wantRelated, boolean wantAntonym) {
 		this.data = data;
 		this.toTranslate = toTranslate;
 		this.nrOfTranslations = nrOfTranslations;
@@ -43,23 +43,23 @@ public class TranslationXmlHandler extends DefaultHandler {
 	}
 
 	public static TranslationXmlHandler createAsAntonym(Set<String> data, String toTranslate, int count) {
-		return new TranslationXmlHandler(data, toTranslate, count, !SEARCH_FOR_DECLENSION,
-				!SEARCH_FOR_RELATED, SEARCH_FOR_ANTONYMS);
+		return new TranslationXmlHandler(data, toTranslate, count, !SEARCH_FOR_DECLENSION, !SEARCH_FOR_RELATED,
+				SEARCH_FOR_ANTONYMS);
 	}
 
 	public static TranslationXmlHandler createAsDeclension(Set<String> data, String toTranslate, int count) {
-		return new TranslationXmlHandler(data, toTranslate, count, SEARCH_FOR_DECLENSION,
-				!SEARCH_FOR_RELATED, !SEARCH_FOR_ANTONYMS);
+		return new TranslationXmlHandler(data, toTranslate, count, SEARCH_FOR_DECLENSION, !SEARCH_FOR_RELATED,
+				!SEARCH_FOR_ANTONYMS);
 	}
 
 	public static TranslationXmlHandler createAsRelated(Set<String> data, String toTranslate, int count) {
-		return new TranslationXmlHandler(data, toTranslate, count, !SEARCH_FOR_DECLENSION,
-				SEARCH_FOR_RELATED, !SEARCH_FOR_ANTONYMS);
+		return new TranslationXmlHandler(data, toTranslate, count, !SEARCH_FOR_DECLENSION, SEARCH_FOR_RELATED,
+				!SEARCH_FOR_ANTONYMS);
 	}
 
 	public static TranslationXmlHandler createAsTranslation(Set<String> data, String toTranslate, int count) {
-		return new TranslationXmlHandler(data, toTranslate, count, !SEARCH_FOR_DECLENSION,
-				!SEARCH_FOR_RELATED, !SEARCH_FOR_ANTONYMS);
+		return new TranslationXmlHandler(data, toTranslate, count, !SEARCH_FOR_DECLENSION, !SEARCH_FOR_RELATED,
+				!SEARCH_FOR_ANTONYMS);
 	}
 
 	@Override
@@ -68,8 +68,7 @@ public class TranslationXmlHandler extends DefaultHandler {
 	}
 
 	@Override
-	public void startElement(String uri, String localName, String qName, Attributes attributes)
-			throws SAXException {
+	public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
 		super.startElement(uri, localName, qName, attributes);
 
 		if (localName.equals("values")) {
@@ -79,9 +78,9 @@ public class TranslationXmlHandler extends DefaultHandler {
 			if (tokenFound && localName.equals("string")) {
 				isTranslation = true;
 			} else {
-				isTranslation = false;	
+				isTranslation = false;
 			}
-			//reset lookup
+			// reset lookup
 			tokenFound = false;
 		}
 	}
@@ -240,8 +239,7 @@ public class TranslationXmlHandler extends DefaultHandler {
 	private void handleGlosbe(String currText) {
 		if (isTranslation) {
 
-			if (currText.trim().equals("") || currText.trim().equals("\n")
-					|| currText.trim().equals(toTranslate)) {
+			if (currText.trim().equals("") || currText.trim().equals("\n") || currText.trim().equals(toTranslate)) {
 				// ignore empty and same word
 			} else {
 				translation = currText;
@@ -253,10 +251,9 @@ public class TranslationXmlHandler extends DefaultHandler {
 	}
 
 	private void removeGenitive() {
-		List<String> tokens = new java.util.ArrayList<String>(Arrays.asList(translation.split(Pattern
-				.quote("|"))));
+		List<String> tokens = new java.util.ArrayList<String>(Arrays.asList(translation.split(Pattern.quote("|"))));
 
-		if (tokens != null && tokens.size() >= 2) {
+		if (tokens.size() >= 2) {
 			if (tokens.get(1).endsWith("s")) {
 				tokens.remove(1);
 			}
