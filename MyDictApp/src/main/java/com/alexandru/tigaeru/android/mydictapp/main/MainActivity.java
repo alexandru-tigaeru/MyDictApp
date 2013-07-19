@@ -129,6 +129,17 @@ public class MainActivity extends Activity implements LessonsFragment.OnLessonSe
 		}
 	}
 
+	
+	////////////////////////////////////////////////
+	//				ActionBar
+	////////////////////////////////////////////////
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.main, menu);
+		return true;
+	}
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
@@ -218,14 +229,7 @@ public class MainActivity extends Activity implements LessonsFragment.OnLessonSe
 		// TODO make a dialog and ask for confirmation
 		finish();
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.main, menu);
-		return true;
-	}
-
+	
 	@Override
 	protected void onResume() {
 		super.onResume();

@@ -12,7 +12,7 @@ public class Lesson {
 
 	public Lesson() {
 		currentNumber = instances + 1;
-		Lesson.instances++;
+		Lesson.addNewLesson();
 		this.name = "Lektion" + currentNumber;
 	}
 
@@ -31,6 +31,10 @@ public class Lesson {
 
 	public static int getNumberOfLessons() {
 		return Lesson.instances;
+	}
+	
+	private synchronized static void addNewLesson(){
+		Lesson.instances++;
 	}
 
 	public static void resetNrOfLessons() {
